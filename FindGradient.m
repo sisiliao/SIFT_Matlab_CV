@@ -4,9 +4,7 @@ function [arr_mag,arr_dir,arr_weighted]=FindGradient(key,g1,g2,g3,g4)
 [Gmag2, Gdir2] = imgradient(g2,'prewitt');
 [Gmag3, Gdir3] = imgradient(g3,'prewitt');
 [Gmag4, Gdir4] = imgradient(g4,'prewitt');
-
-% arr_mag = zeros(16,16);
-% arr_dir = zeros(16,16);
+% [Gmag5, Gdir5] = imgradient(g5,'prewitt');
 
 for i=1:size(key,1)
     try
@@ -26,10 +24,16 @@ for i=1:size(key,1)
             arr_mag(:,:,i) = Gmag4(key(i,1)-7:key(i,1)+8,key(i,2)-7:key(i,2)+8);
             arr_dir(:,:,i) = Gdir4(key(i,1)-7:key(i,1)+8,key(i,2)-7:key(i,2)+8);
         end
+%         if key(i,3)==5
+%             arr_mag(:,:,i) = Gmag5(key(i,1)-7:key(i,1)+8,key(i,2)-7:key(i,2)+8);
+%             arr_dir(:,:,i) = Gdir5(key(i,1)-7:key(i,1)+8,key(i,2)-7:key(i,2)+8);
+%         end
         arr_weighted(:,:,i) = arr_mag(:,:,i) .* fspecial('gaussian',16,1);
     catch
         disp("")
     end    
+end
+
 end
 
 % figure

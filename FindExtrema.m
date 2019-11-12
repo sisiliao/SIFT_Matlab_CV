@@ -74,5 +74,20 @@ for i=5:len4-5
         end
     end
 end
+
+% l5
+[len5,wid5]=size(l5);
+for i=5:len5-5
+    for j=5:wid5-5
+        if l5(i,j) == max(max(l5(i-dis:i+dis,j-dis:j+dis))) || l5(i,j) == min(min(l5(i-dis:i+dis,j-dis:j+dis))) 
+            if (l5(i,j) > max(max(down_l4(i-dis:i+dis,j-dis:j+dis)))) || (l5(i,j) < min(min(down_l4(i-dis:i+dis,j-dis:j+dis))))
+                if abs(l5(i,j)) > 0
+                    b=[j,i,5];
+%                     k=[k;b];
+                end
+            end
+        end
+    end
+end
 k=k(2:size(k,1),:);
 

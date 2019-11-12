@@ -42,6 +42,6 @@ x_new = int32(floor(size(rotatedim,1) / 2 + 1));
 y_new = int32(floor(size(rotatedim,2) / 2 + 1));
 
 % crop rectangle [xmin ymin width height] 
-cropped_im = imcrop(rotatedim,[y_new-y0 x_new-x0 leng height]);
+cropped_im = imcrop(rotatedim,[y_new-y0 x_new-x0 leng-1 height-1]);
 scaled_im = imresize(cropped_im, scale);
 
